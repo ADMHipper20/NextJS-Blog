@@ -36,7 +36,7 @@ export default function Home() {
         <h1 style={{ position: "relative", zIndex: 1, color: "rgb(255, 255, 255)", WebkitTextStroke: "0.1px black", fontSize: "52px", letterSpacing: 2, margin: 0 }} className="text-5xl font-normal font-serif">NBB TUS - Nippon 文化ブ</h1>
       </section>
       <section id="characters" style={{ padding: "4rem 0", background: "#f7f7f7", display: "flex", flexDirection: "column", alignItems: "center" }}>
-        <h2 className="text-3xl font-normal mb-8 text-center">Characters</h2>
+        <h2 className="text-3xl font-normal mb-8 text-center" style={{ letterSpacing: 2, fontSize: '32px', fontWeight: "normal"}}>Characters</h2>
         <CharacterCarousel />
       </section>
       <section id="news" className="news-sans-serif" style={{ padding: "4rem 0" }}>
