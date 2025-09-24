@@ -68,11 +68,11 @@ function Navbar() {
       }}
     >
       <style>{`html { scroll-behavior: smooth; }`}</style>
-      <div style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: "2rem", margin: 0, padding: 0, }}>
         <div style={{ fontWeight: 500, fontSize: 22, letterSpacing: 2, color: "#fff", display: "flex", alignItems: "center", paddingRight: "100px"}}>
           <span style={{ marginRight: 6, fontSize: 26 }}>🌸</span> NBB TUS
         </div>
-        <ul style={{ display: "flex", gap: "2rem", listStyle: "none", margin: 0, padding: 0, letterSpacing: 2 }}>
+        <ul style={{ display: "flex", gap: "2rem", listStyle: "none", letterSpacing: 2, alignItems: "center" }}>
           {navItems.map((item) => (
             <li key={item.id}>
               {item.href.startsWith("#") ? (

@@ -182,16 +182,17 @@ export default function CharacterCarousel() {
         alignItems: "center",
         justifyContent: "center",
         gap: 12,
-        margin: "24px 0 8px 0",
+        margin: "24px 0 0 0",
         background: "rgba(255,255,255,0.95)",
         borderRadius: 16,
         boxShadow: "0 2px 8px rgba(30,30,30,0.08)",
-        padding: "12px 24px",
+        padding: "12px 24px 20px 24px",
         minHeight: 110,
         minWidth: 320,
         maxWidth: 600,
         width: "100%",
-        overflow: "hidden"
+        overflow: "hidden",
+        position: "relative"
       }}>
         {thumbPage > 0 && (
           <button onClick={() => setThumbPage(thumbPage - 1)} style={{ fontSize: 28, background: "#eee", border: "none", borderRadius: 8, cursor: "pointer", marginRight: 8, height: 64, width: 32 }}>&#60;</button>
@@ -225,23 +226,28 @@ export default function CharacterCarousel() {
         {thumbPage < totalPages - 1 && (
           <button onClick={() => setThumbPage(thumbPage + 1)} style={{ fontSize: 28, background: "#eee", border: "none", borderRadius: 8, cursor: "pointer", marginLeft: 8, height: 64, width: 32 }}>&#62;</button>
         )}
-      </div>
-      {/* Dot navigation */}
-      <div style={{ display: "flex", gap: 8, justifyContent: "center", marginTop: 8 }}>
-        {Array.from({ length: totalPages }).map((_, i) => (
-          <div
-            key={i}
-            onClick={() => setThumbPage(i)}
-            style={{
-              width: 16,
-              height: 16,
-              borderRadius: "50%",
-              background: i === thumbPage ? "#e91e63" : "#bbb",
-              cursor: "pointer",
-              transition: "background 0.2s"
-            }}
-          />
-        ))}
+        {/* Thick line indicator */}
+        <div style={{
+          position: "absolute",
+          left: thumbPage > 0 ? 56 : 0, // account for left arrow
+          right: thumbPage < totalPages - 1 ? 56 : 0, // account for right arrow
+          bottom: 6,
+          height: 8,
+          width: `calc(100% - ${(thumbPage > 0 ? 56 : 0) + (thumbPage < totalPages - 1 ? 56 : 0)}px)`,
+          background: "#eee",
+          borderRadius: 4,
+          zIndex: 1,
+          overflow: "hidden"
+        }}>
+          <div style={{
+            width: `${100 / totalPages}%`,
+            height: "100%",
+            background: "#e91e63",
+            borderRadius: 4,
+            transform: `translateX(${thumbPage * 100}%)`,
+            transition: "transform 0.3s"
+          }} />
+        </div>
       </div>
     </div>
   );
